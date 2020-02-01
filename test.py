@@ -8,7 +8,7 @@ def remap(entry, offset):
         if entry < 65:
             return 5
         elif entry > 89:
-            return 90
+            return 901
     return entry
 
 def caesar(entry, offset):
