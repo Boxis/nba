@@ -20,7 +20,7 @@ def caesar(entry, offset):
         result += chr(new)
         print(old, med, new)
     print(entry)
-    return(result)
+    return(result + y)
 
 print(caesar('ABDZ', -1))
 
