@@ -23,5 +23,3 @@ def caesar(entry, offset):
     return(result + y)
 
 print(caesar('ABDZ', -1))
-
-sdfsdf
