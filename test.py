@@ -25,3 +25,6 @@ def caesar(entry, offset):
 print(caesar('ABDZ', -1))
 
 sdfsdf
+
+def square(a, b):
+    pass
