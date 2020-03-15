@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 data = pd.read_csv("season_stats_merged.csv")
 data = data.dropna()
@@ -7,7 +8,7 @@ data = data[data.Tm != "TOT"]
 data["g_norm"] = data["G"] / 82
 data = data[~data.Pos.isin(["F", "G", "F-C", "C-F", "G-F", "F-G"])]
 
-# print(data.head())
+print(data.head())
 
 X = data[["Year","Pos","Age","height","weight","g_norm"]]
 y = data[["TS%"]]
@@ -50,11 +51,11 @@ preds = model.predict(OH_train_X)
 
 from sklearn.metrics import mean_absolute_error
 
-# print("MAE: " + str(mean_absolute_error(val_y,preds_val)))
+print("MAE: " + str(mean_absolute_error(val_y,preds_val)))
 
 from p_value import pvalue
 
-# pvalue(model.intercept_, model.coef_, preds, OH_train_X, train_y)
+pvalue(model.intercept_, model.coef_, preds, OH_train_X, train_y)
 
 import statsmodels.api as sm
 
@@ -66,3 +67,9 @@ est2 = est.fit()
 print(est2.params)
 
 est2.predict(X2)
+est2.summary()
+
+from sklearn import metrics
+print('Mean Absolute Error:', metrics.mean_absolute_error(val_y, preds_val ))  
+print('Mean Squared Error:', metrics.mean_squared_error(val_y, preds_val ))  
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(val_y, preds_val)))
